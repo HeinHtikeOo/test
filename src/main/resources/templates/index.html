@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+  <link rel="stylesheet" href="../static/bootstrap/css/bootstrap.min.css"
+  th:href="@{/bootstrap/css/bootstrap.min.css}">
+</head>
+<body>
+  <div class="container mt-5">
+    <h2>ToDoList</h2>
+      <form th:action="@{/save-todo}" th:object="${todo}" method="post">
+          <div class="form-group">
+              <label for="todo">ToDo</label>
+              <input type="text" id="todo" th:field="*{item}" class="form-control">
+
+          </div>
+          <input type="submit" class="btn btn-info btn-lg btn-block" value="Save to do List">
+          <ul class="list-group" th:each="item : ${todoList}">
+              <li class="list-group-item" th:text="${item.item}"></li>
+
+          </ul>
+      </form>
+  </div>
+</body>
+</html>
